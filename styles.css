@@ -1,0 +1,33 @@
+img {
+    width: 70vw;
+    border: 20px solid black;
+    padding: 3px;
+    margin: 5px;
+}
+
+body {
+   border: 20px solid black;
+}
+
+.everything {
+    display: grid;
+    place-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    
+}
+
+#input {
+    padding: 5px;
+    margin: 10px;
+}
+
+.guess {
+    padding: 5px;
+    margin: 10px
+}
+
+.results {
+    
+}
+
