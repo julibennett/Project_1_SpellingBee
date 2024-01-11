@@ -47,13 +47,26 @@ submitButton.addEventListener('click', function(){
     if(inputBox.value === spellingWord){
         alertMessages.innerHTML = 'Correct!'
         score ++
-        scoreValue.innerHTML = "Score: "+ score
+        scoreValue.innerHTML = "Score: "+ score // adding 1 to the score for each correct word
+        correctWordsList.innerHTML = spellingWord
     } else {
         alertMessages.innerHTML = `Incorrect! The correct spelling was ${spellingWord}.`  
+        incorrectWordsList.innerHTML = spellingWord
     }
 // Making sure to clear the input box after each guess
     inputBox.value = ''
 })
+
+// Targeting my pronounce word button which will repeat the spelling word as many times as the user wants
+hearWordAgain = document.getElementById('hear-again')
+
+// Using the same speech event listener as for the generate new word button
+hearWordAgain.addEventListener('click', function(){
+    let pronounce = new SpeechSynthesisUtterance()
+    pronounce.text = spellingWord
+    speechSynthesis.speak(pronounce)
+})
+
 
 alertMessages = document.getElementById('alerts')
 
