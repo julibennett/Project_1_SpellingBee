@@ -4,9 +4,9 @@
 
 let spellingWord;
 
-let correctWords = 0;
+let correctWords;
 
-let incorrectWords = 0;
+let incorrectWords;
 
 let score = 0;
 
@@ -42,14 +42,17 @@ correctWordsList = document.getElementById('correct-list')
 incorrectWordsList = document.getElementById('incorrect-list')
 scoreValue = document.getElementById('score')
 
+// Event Listener for my submit button
 submitButton.addEventListener('click', function(){
     if(inputBox.value === spellingWord){
         alertMessages.innerHTML = 'Correct!'
         score ++
         scoreValue.innerHTML = "Score: "+ score
     } else {
-        alertMessages.innerHTML = 'Incorrect!'
+        alertMessages.innerHTML = `Incorrect! The correct spelling was ${spellingWord}.`  
     }
+// Making sure to clear the input box after each guess
+    inputBox.value = ''
 })
 
 alertMessages = document.getElementById('alerts')
