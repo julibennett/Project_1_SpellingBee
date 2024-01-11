@@ -1,9 +1,18 @@
+// Spelling Bee Game!
+
+// Defining my main global variables
+
 let spellingWord;
 
 let correctWords = 0;
 
 let incorrectWords = 0;
 
+let score = 0;
+
+let level = 1;
+
+// My arrays of words for each level of the game
 const levelOneWords = ['smart', 'dump', 'merge', 'order', 'list', 'craft', 'alone', 'goat', 'cat', 'bump', 'yellow', 'slap', 'ship', 'array', 'code', 'trip', 'pasta', 'smell', 'shirt', 'hello', 'flip', 'cow', 'move', 'book', 'lose', 'spell', 'water', 'candle', 'home', 'yummy', 'cube', 'circle', 'room', 'scarf', 'ocean', 'teach', 'liver', 'thank', 'story', 'people', 'coming', 'foul', 'chief', 'sauce', 'calm', 'salad', 'slide', 'also', 'foam', 'power', 'place', 'oil', 'pretty', 'china', 'camera', 'shoe', 'swim', 'idea', 'feet', 'large', 'frame', 'rapid', 'booth', 'track', 'crust', 'bag', 'page', 'bush', 'leaf', 'wood', 'stick', 'grass', 'flower', 'cap', 'tea', 'blue', 'black', 'white', 'sweet', 'dark','light', 'ink','hard', 'soft', 'wild', 'brand', 'band', 'slip', 'slap', 'slime', 'catch','eat', 'drink','table','string','fish','pink','spice','gold','silver','door','page','pants','shirt','watch','metal','under','above','wave','cut','born','horn','morning','night','straw','box','sand','beer','bird','bug','cube','heart','gym','glass','cute','ugly','pretty','smile','stool','tab','pain','must','jelly','drill','hike','son','good','bad','mask','cell','flap','poor','cold','hot','try','clock','foam','cheese','bread','spike','shoe','prize','goal']
 
 const levelTwoWords = ['balm', 'compartment', 'prospector', 'gouge', 'gourd', 'support', 'canceled', 'rhythm', 'exterminate', 'quarrelling', 'chaos', 'orchestra', 'originated', 'geography', 'sapphire', 'fatigue', 'recruit', 'chaperone', 'charade', 'chivalry', 'mahcinery', 'peasant', 'perimeter', 'persuade', 'thermometer', 'camouflage', 'limousine', 'gargoyle', 'inept', 'voucher', 'meteor', 'gymnasium', 'behavior', 'acoustics', 'dilemma', 'mayhem', 'successor', 'grotesque', 'accelerate', 'scholar', 'canopy', 'scuba', 'cavity', 'sneer', 'dire', 'decimal', 'cubicle', 'league', 'physical', 'apparel', 'welding', 'genuine', 'avenue', 'groom', 'exude', 'potato', 'moose', 'wafer', 'sofa', 'kangaroo', 'mischief', 'cabbage', 'mastiff', 'mince', 'uncle', 'island', 'missile', 'tongue', 'banana', 'venemous', 'troll', 'timber', 'sword', 'erode', 'jersey', 'puzzle', 'extinct', 'heroic', 'dilemma', 'pamper', 'pleasant', 'bias', 'trumpet', 'golden', 'erase', 'veteran', 'shamrock', 'magician', 'squirm', 'slogan', 'cucumber', 'janitor', 'pedigree', 'cowlick', 'raisin', 'penguin', 'lactose', 'vault', 'snippet', 'quart', 'mantra', 'badger', 'marathon', 'failure', 'tolerable', 'target', 'imagined', 'ordinary', 'crouched', 'blurted', 'whiskers', 'mango', 'knot']
@@ -20,24 +29,41 @@ generateNewWord.addEventListener('click',function() {
     randomNumber = Math.floor(Math.random()*(levelOneWords.length +1))
     spellingWord = levelOneWords[randomNumber]
 
+// Getting the computer the speak each word verbally for the listener to hear
     let pronounce = new SpeechSynthesisUtterance()
     pronounce.text = spellingWord
     speechSynthesis.speak(pronounce)
 })
 
+// Grabbing some more elements that I'm going to need
 submitButton = document.getElementById('submit')
 inputBox = document.getElementById('input')
+correctWordsList = document.getElementById('correct-list')
+incorrectWordsList = document.getElementById('incorrect-list')
+scoreValue = document.getElementById('score')
 
 submitButton.addEventListener('click', function(){
     if(inputBox.value === spellingWord){
-        alert('Correct!')
-        correctWords ++
+        alertMessages.innerHTML = 'Correct!'
+        score ++
+        scoreValue.innerHTML = "Score: "+ score
     } else {
-        alert('Incorrect')
-        incorrectWords ++
+        alertMessages.innerHTML = 'Incorrect!'
     }
 })
 
-if(correctWords = 10) {
-    
+alertMessages = document.getElementById('alerts')
+
+if(score === 10) {
+    runLevelTwo()
+} else if (score === 20) {
+    runLevelThree()
+} else if (score === 25) {
+    runLevelFour()
+} else if (score === 30) {
+    alertMessages.innerHTML = 'YOU WIN!!!! Congratulations spelling bee champ!'
+}
+
+if(incorrectWords === 10) {
+    alertMessages.innerHTML = 'You have guessed 10 words incorrectly, game over!'
 }

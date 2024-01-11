@@ -7,26 +7,69 @@ img {
 
 body {
    border: 20px solid black;
+   background-color: black;
+background-image: url(http://www.transparenttextures.com/patterns/light-honeycomb.png);
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 .everything {
     display: grid;
     place-items: center;
-    margin-top: 50px;
+    margin-top: 20px;
     margin-bottom: 50px;
     
 }
 
 #input {
-    padding: 5px;
+    padding: 10px;
     margin: 10px;
     width: 60vw;
+    border: 5px solid black;
 }
 
 .guess {
-    padding: 5px;
-    margin: 10px
+    padding: 10px;
+    margin: 5px;
 }
 
+#level {
+    border: 5px solid black;
+    padding: 10px;
+    background-color: rgb(241, 191, 73);
+}
 
+#correct {
+    border: 5px solid black;
+    padding: 5px;
+    background-color: rgb(241, 191, 73);
+}
 
+#incorrect {
+    border: 5px solid black;
+    padding: 5px;
+    background-color: rgb(241, 191, 73);
+}
+
+#alerts {
+    color: rgb(241, 191, 73)
+}
+
+.score-timer {
+    display:flex;
+}
+
+#score {
+    padding: 5px 50px 5px 50px;
+    border: 5px solid black;
+    margin-right: 20px;
+    background-color: rgb(241, 191, 73);
+
+}
+
+#timer {
+    padding: 5px 50px 5px 50px;
+    border: 5px solid black;
+    margin-left: 20px;
+    background-color: rgb(241, 191, 73);
+
+}

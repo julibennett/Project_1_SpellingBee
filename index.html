@@ -9,20 +9,26 @@
 </head>
 <body>
     <div class="everything">
+        <div class="score-timer">
+            <h4 id="score">Score: 0</h4>
+            <h4 id="timer">Timer: </h4>
+        </div>
+    
     <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/The_Spelling_Bee_Ghana_logo.png">
-    <h4>Level: </h4>
+    <h3 id="level">Level: 1 </h3> 
     <input type="text" id="input">
+     <h3 id="alerts"></h3>
     <button id="generate">Click for New Word</button>
-
+   
         <div class="guess">
             <button id="pronounce">Pronounce Word</button>
             <button id="submit">Submit Guess</button>
         </div>
             <div class="results">
                 <h4 id="correct">Correct: </h4>
-                    <h6 id="correct-list"> </h6>
+                    <h6 id="correct-list"></h6>
                 <h4 id="incorrect">Incorrect: </h4>
-                    <h6 id="incorrect-list"> </h6>
+                    <h6 id="incorrect-list"></h6>
             </div>
     </div>
 </body>
