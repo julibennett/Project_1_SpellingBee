@@ -8,7 +8,7 @@ img {
 body {
    border: 20px solid black;
    background-color: black;
-background-image: url(http://www.transparenttextures.com/patterns/light-honeycomb.png);
+   background-image: url(http://www.transparenttextures.com/patterns/light-honeycomb.png);
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
@@ -53,6 +53,10 @@ background-image: url(http://www.transparenttextures.com/patterns/light-honeycom
 #alerts {
     color: rgb(241, 191, 73)
 }
+
+/* .hidden {
+    display: none;
+} */
 
 .score-timer {
     display:flex;

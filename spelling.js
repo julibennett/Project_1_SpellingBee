@@ -41,6 +41,17 @@ inputBox = document.getElementById('input')
 correctWordsList = document.getElementById('correct-list')
 incorrectWordsList = document.getElementById('incorrect-list')
 scoreValue = document.getElementById('score')
+alertMessages = document.getElementById('alerts')
+
+// function showDiv() {
+//     document.getElementById('show-hide').style.visibility = 'visible'
+// }
+//     setTimeout('showDiv()', 2000)
+
+// function hideDiv(alertMessages) {
+//             alertMessages.style.visibility = 'hidden'
+//         }
+//             setTimeout('hideDiv()', 5000) 
 
 // Event Listener for my submit button
 submitButton.addEventListener('click', function(){
@@ -49,6 +60,7 @@ submitButton.addEventListener('click', function(){
         score ++
         scoreValue.innerHTML = "Score: "+ score // adding 1 to the score for each correct word
         correctWordsList.innerHTML = spellingWord
+
     } else {
         alertMessages.innerHTML = `Incorrect! The correct spelling was ${spellingWord}.`  
         incorrectWordsList.innerHTML = spellingWord
@@ -56,6 +68,8 @@ submitButton.addEventListener('click', function(){
 // Making sure to clear the input box after each guess
     inputBox.value = ''
 })
+
+
 
 // Targeting my pronounce word button which will repeat the spelling word as many times as the user wants
 hearWordAgain = document.getElementById('hear-again')
@@ -67,8 +81,6 @@ hearWordAgain.addEventListener('click', function(){
     speechSynthesis.speak(pronounce)
 })
 
-
-alertMessages = document.getElementById('alerts')
 
 if(score === 10) {
     runLevelTwo()
@@ -83,3 +95,4 @@ if(score === 10) {
 if(incorrectWords === 10) {
     alertMessages.innerHTML = 'You have guessed 10 words incorrectly, game over!'
 }
+
