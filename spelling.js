@@ -29,7 +29,9 @@ generateNewWord = document.getElementById('generate')
 // Add event listener function
 
 function runLevelOne() {
+if(score < 10) {
 generateNewWord.addEventListener('click',function() {
+    // generateNewWord.addEventListener('click', levelHandler)
     randomNumber = Math.floor(Math.random()*(levelOneWords.length +1))
     spellingWord = levelOneWords[randomNumber]
 
@@ -38,7 +40,8 @@ generateNewWord.addEventListener('click',function() {
     pronounce.text = spellingWord
     speechSynthesis.speak(pronounce)
     })
-}
+    } 
+}  
 
 // Targeting my pronounce word button which will repeat the spelling word as many times as the user wants
 hearWordAgain = document.getElementById('hear-again')
@@ -63,6 +66,11 @@ submitButton.addEventListener('click', function(){
     if(inputBox.value === spellingWord){
         alertMessages.innerHTML = 'Correct!' 
         score ++
+            if(score >= 10 && score < 20) {
+                runLevelTwo()
+                // generateNewWord.removeEventListener(runLevelOne())
+            }    
+  
         scoreValue.innerHTML = "Score: "+ score // adding 1 to the score for each correct word
         correctWordsList.innerHTML = spellingWord
 
@@ -82,8 +90,7 @@ submitButton.addEventListener('click', function(){
 
 // If statements to determine when to switch each level 
 
-// if(score === 10) {
-//     runLevelTwo()
+
 // } else if (score === 20) {
 //     runLevelThree()
 // } else if (score === 25) {
@@ -96,13 +103,14 @@ submitButton.addEventListener('click', function(){
 // if(incorrectWords === 10) {
 //     gameOver = true
 //     alertMessages.innerHTML = 'You have guessed 10 words incorrectly, game over!'
-// } 
+
 
 
 // Run Level 2
-while (score >= 10 && score < 20) {
+// while (score >= 10 && score < 20) {
+// if(score >= 10 && score < 20) {
 function runLevelTwo () {
-// generateNewWord.addEventListener('click',function() {
+generateNewWord.addEventListener('click',function() {
     randomNumber = Math.floor(Math.random()*(levelTwoWords.length +1))
     spellingWord = levelTwoWords[randomNumber]
 
@@ -110,8 +118,9 @@ function runLevelTwo () {
     let pronounce = new SpeechSynthesisUtterance()
     pronounce.text = spellingWord
     speechSynthesis.speak(pronounce)
-    }
-}
+        }
+    )}
+// }
 
 // Run Level 3
 // function runLevelThree() {
@@ -141,5 +150,5 @@ function runLevelTwo () {
 
 runLevelOne()
 runLevelTwo()
-runLevelThree()
-runLevelFour()
+// runLevelThree()
+// runLevelFour()
