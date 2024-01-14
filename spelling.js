@@ -12,6 +12,8 @@ let score = 0;
 
 let level = 1;
 
+let gameOver = false;
+
 // My arrays of words for each level of the game
 const levelOneWords = ['smart', 'dump', 'merge', 'order', 'list', 'craft', 'alone', 'goat', 'cat', 'bump', 'yellow', 'slap', 'ship', 'array', 'code', 'trip', 'pasta', 'smell', 'shirt', 'hello', 'flip', 'cow', 'move', 'book', 'lose', 'spell', 'water', 'candle', 'home', 'yummy', 'cube', 'circle', 'room', 'scarf', 'ocean', 'teach', 'liver', 'thank', 'story', 'people', 'coming', 'foul', 'chief', 'sauce', 'calm', 'salad', 'slide', 'also', 'foam', 'power', 'place', 'oil', 'pretty', 'china', 'camera', 'shoe', 'swim', 'idea', 'feet', 'large', 'frame', 'rapid', 'booth', 'track', 'crust', 'bag', 'page', 'bush', 'leaf', 'wood', 'stick', 'grass', 'flower', 'cap', 'tea', 'blue', 'black', 'white', 'sweet', 'dark','light', 'ink','hard', 'soft', 'wild', 'brand', 'band', 'slip', 'slap', 'slime', 'catch','eat', 'drink','table','string','fish','pink','spice','gold','silver','door','page','pants','shirt','watch','metal','under','above','wave','cut','born','horn','morning','night','straw','box','sand','beer','bird','bug','cube','heart','gym','glass','cute','ugly','pretty','smile','stool','tab','pain','must','jelly','drill','hike','son','good','bad','mask','cell','flap','poor','cold','hot','try','clock','foam','cheese','bread','spike','shoe','prize','goal']
 
@@ -25,11 +27,23 @@ const levelFourWOrds = ['frugivore', 'telamon', 'janthina', 'toorie', 'cataphora
 generateNewWord = document.getElementById('generate')
 
 // Add event listener function
+function runLevelOne() {
 generateNewWord.addEventListener('click',function() {
     randomNumber = Math.floor(Math.random()*(levelOneWords.length +1))
     spellingWord = levelOneWords[randomNumber]
 
 // Getting the computer the speak each word verbally for the listener to hear
+    let pronounce = new SpeechSynthesisUtterance()
+    pronounce.text = spellingWord
+    speechSynthesis.speak(pronounce)
+    })
+}
+
+// Targeting my pronounce word button which will repeat the spelling word as many times as the user wants
+hearWordAgain = document.getElementById('hear-again')
+
+// Using the same speech event listener as for the generate new word button
+hearWordAgain.addEventListener('click', function(){
     let pronounce = new SpeechSynthesisUtterance()
     pronounce.text = spellingWord
     speechSynthesis.speak(pronounce)
@@ -43,20 +57,10 @@ incorrectWordsList = document.getElementById('incorrect-list')
 scoreValue = document.getElementById('score')
 alertMessages = document.getElementById('alerts')
 
-// function showDiv() {
-//     document.getElementById('show-hide').style.visibility = 'visible'
-// }
-//     setTimeout('showDiv()', 2000)
-
-// function hideDiv(alertMessages) {
-//             alertMessages.style.visibility = 'hidden'
-//         }
-//             setTimeout('hideDiv()', 5000) 
-
 // Event Listener for my submit button
-submitButton.addEventListener('click', function(){
+submitButton.addEventListener('click', function(){     
     if(inputBox.value === spellingWord){
-        alertMessages.innerHTML = 'Correct!'
+        alertMessages.innerHTML = 'Correct!' 
         score ++
         scoreValue.innerHTML = "Score: "+ score // adding 1 to the score for each correct word
         correctWordsList.innerHTML = spellingWord
@@ -67,21 +71,15 @@ submitButton.addEventListener('click', function(){
     }
 // Making sure to clear the input box after each guess
     inputBox.value = ''
+
+// Clearing the 'correct' or 'incorrect' alert message after 3 seconds
+    setTimeout(function(){
+        alertMessages.innerHTML = ''
+    }, 3000)
+
 })
 
-
-
-// Targeting my pronounce word button which will repeat the spelling word as many times as the user wants
-hearWordAgain = document.getElementById('hear-again')
-
-// Using the same speech event listener as for the generate new word button
-hearWordAgain.addEventListener('click', function(){
-    let pronounce = new SpeechSynthesisUtterance()
-    pronounce.text = spellingWord
-    speechSynthesis.speak(pronounce)
-})
-
-
+// If statements to determine when to switch each level    
 if(score === 10) {
     runLevelTwo()
 } else if (score === 20) {
@@ -90,9 +88,59 @@ if(score === 10) {
     runLevelFour()
 } else if (score === 30) {
     alertMessages.innerHTML = 'YOU WIN!!!! Congratulations spelling bee champ!'
+} else {
+    runLevelOne()
 }
 
+// Game over
 if(incorrectWords === 10) {
+    gameOver = true
     alertMessages.innerHTML = 'You have guessed 10 words incorrectly, game over!'
+} else {
+    gameOver = false
 }
 
+
+// Run Level 2
+function runLevelTwo () {
+// generateNewWord.addEventListener('click',function() {
+    randomNumber = Math.floor(Math.random()*(levelTwoWords.length +1))
+    spellingWord = levelTwoWords[randomNumber]
+
+// Getting the computer the speak each word verbally for the listener to hear
+    // let pronounce = new SpeechSynthesisUtterance()
+    // pronounce.text = spellingWord
+    // speechSynthesis.speak(pronounce)
+    // })
+}
+
+// Run Level 3
+// function runLevelThree() {
+// generateNewWord.addEventListener('click',function() {
+//     randomNumber = Math.floor(Math.random()*(levelThreeWords.length +1))
+//     spellingWord = levelThreeWords[randomNumber]
+
+// // Getting the computer the speak each word verbally for the listener to hear
+//     let pronounce = new SpeechSynthesisUtterance()
+//     pronounce.text = spellingWord
+//     speechSynthesis.speak(pronounce)
+//     })
+// }
+
+// // Run Level 4
+// function runLevelFour() {
+// generateNewWord.addEventListener('click',function() {
+//     randomNumber = Math.floor(Math.random()*(levelFourWords.length +1))
+//     spellingWord = levelFourWords[randomNumber]
+
+// // Getting the computer the speak each word verbally for the listener to hear
+//     let pronounce = new SpeechSynthesisUtterance()
+//     pronounce.text = spellingWord
+//     speechSynthesis.speak(pronounce)
+//     })
+// }
+
+runLevelOne()
+runLevelTwo()
+runLevelThree()
+runLevelFour()
