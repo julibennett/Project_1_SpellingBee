@@ -27,6 +27,7 @@ const levelFourWOrds = ['frugivore', 'telamon', 'janthina', 'toorie', 'cataphora
 generateNewWord = document.getElementById('generate')
 
 // Add event listener function
+
 function runLevelOne() {
 generateNewWord.addEventListener('click',function() {
     randomNumber = Math.floor(Math.random()*(levelOneWords.length +1))
@@ -79,39 +80,37 @@ submitButton.addEventListener('click', function(){
 
 })
 
-// If statements to determine when to switch each level    
-if(score === 10) {
-    runLevelTwo()
-} else if (score === 20) {
-    runLevelThree()
-} else if (score === 25) {
-    runLevelFour()
-} else if (score === 30) {
-    alertMessages.innerHTML = 'YOU WIN!!!! Congratulations spelling bee champ!'
-} else {
-    runLevelOne()
-}
+// If statements to determine when to switch each level 
 
-// Game over
-if(incorrectWords === 10) {
-    gameOver = true
-    alertMessages.innerHTML = 'You have guessed 10 words incorrectly, game over!'
-} else {
-    gameOver = false
-}
+// if(score === 10) {
+//     runLevelTwo()
+// } else if (score === 20) {
+//     runLevelThree()
+// } else if (score === 25) {
+//     runLevelFour()
+// } else if (score === 30) {
+//     alertMessages.innerHTML = 'YOU WIN!!!! Congratulations spelling bee champ!'
+// }
+
+// // Game over
+// if(incorrectWords === 10) {
+//     gameOver = true
+//     alertMessages.innerHTML = 'You have guessed 10 words incorrectly, game over!'
+// } 
 
 
 // Run Level 2
+while (score >= 10 && score < 20) {
 function runLevelTwo () {
 // generateNewWord.addEventListener('click',function() {
     randomNumber = Math.floor(Math.random()*(levelTwoWords.length +1))
     spellingWord = levelTwoWords[randomNumber]
 
 // Getting the computer the speak each word verbally for the listener to hear
-    // let pronounce = new SpeechSynthesisUtterance()
-    // pronounce.text = spellingWord
-    // speechSynthesis.speak(pronounce)
-    // })
+    let pronounce = new SpeechSynthesisUtterance()
+    pronounce.text = spellingWord
+    speechSynthesis.speak(pronounce)
+    }
 }
 
 // Run Level 3
