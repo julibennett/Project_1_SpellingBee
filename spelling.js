@@ -10,6 +10,8 @@ let incorrectWords;
 
 let score = 0;
 
+let level = 1
+
 let currentLevel = 0;
 
 let gameOver = false;
@@ -32,9 +34,6 @@ levelText = document.getElementById('level')
 generateNewWord = document.getElementById('generate')
 
 // Add event listener function
-
-// function runLevelOne() {
-// if(score < 10) {
 generateNewWord.addEventListener('click',function() {
     // generateNewWord.addEventListener('click', levelHandler)
     const levelArray = gameLevels[currentLevel]
@@ -46,8 +45,7 @@ generateNewWord.addEventListener('click',function() {
     pronounce.text = spellingWord
     speechSynthesis.speak(pronounce)
     })
-    // } 
-// }  
+   
 
 // Targeting my pronounce word button which will repeat the spelling word as many times as the user wants
 hearWordAgain = document.getElementById('hear-again')
@@ -74,7 +72,12 @@ submitButton.addEventListener('click', function(){
         score ++
         if(score % 10 === 0) {
             currentLevel = Math.min(currentLevel + 1, gameLevels.length - 1)
-        } 
+            level ++
+            levelText.innerHTML = 'Level: ' + level
+            alertMessages.innerHTML = 'Correct! You have made it to the next level!'
+        } else if (score === 40) {
+            alertMessages.innerHTML = 'Congrats, you WIN! You have spelled 10 words correct in all four levels!'
+        }
         scoreValue.innerHTML = "Score: "+ score // adding 1 to the score for each correct word
         correctWordsList.innerHTML = spellingWord
 

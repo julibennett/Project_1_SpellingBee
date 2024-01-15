@@ -25,6 +25,23 @@ body {
     margin: 10px;
     width: 40vw;
     border: 5px solid black;
+    cursor: text;
+}
+
+#hear-again {
+    cursor: pointer;
+}
+
+#submit {
+    cursor: pointer;
+}
+
+#generate {
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(241, 191, 73);
 }
 
 .guess {
@@ -51,12 +68,9 @@ body {
 }
 
 #alerts {
-    color: rgb(241, 191, 73)
+    color: rgb(241, 191, 73);
+    text-align: center;
 }
-
-/* .hidden {
-    display: none;
-} */
 
 .score-timer {
     display:flex;
@@ -76,4 +90,12 @@ body {
     margin-left: 20px;
     background-color: rgb(241, 191, 73);
 
+}
+
+#correct-list {
+    color: rgb(241, 191, 73)
+}
+
+#incorrect-list {
+    color: rgb(241, 191, 73)
 }
