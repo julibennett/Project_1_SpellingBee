@@ -10,7 +10,11 @@ let incorrectWords;
 
 let score = 0;
 
-let level = 1
+let seconds = 20;
+
+let timer;
+
+let level = 1;
 
 let currentLevel = 0;
 
@@ -28,10 +32,22 @@ const gameLevels = [
 ]
 
 levelText = document.getElementById('level')
+gameTimerElement = document.getElementById('timer')
 
+
+function startCountdown() {
+    timer = setInterval(function() {
+        seconds --
+        gameTimerElement.innerHTML = 'Timer: 00:' + (seconds < 10 ? '0' : '') + seconds
+        if(seconds === 0) {
+            clearInterval(timer)
+        }
+    }, 1000)
+    }
 
 // Grabbing the generate word button element
 generateNewWord = document.getElementById('generate')
+
 
 // Add event listener function
 generateNewWord.addEventListener('click',function() {
@@ -44,7 +60,9 @@ generateNewWord.addEventListener('click',function() {
     let pronounce = new SpeechSynthesisUtterance()
     pronounce.text = spellingWord
     speechSynthesis.speak(pronounce)
-    })
+
+    startCountdown()
+})
    
 
 // Targeting my pronounce word button which will repeat the spelling word as many times as the user wants
@@ -64,33 +82,32 @@ correctWordsList = document.getElementById('correct-list')
 incorrectWordsList = document.getElementById('incorrect-list')
 scoreValue = document.getElementById('score')
 alertMessages = document.getElementById('alerts')
-inputDisplay1 = document.getElementById('inputDisplay1')
+// inputDisplay1 = document.getElementById('inputDisplay1')
 
 // Event Listener for my submit button
-submitButton.addEventListener('click', function(){     
+submitButton.addEventListener('click', function(){  
     if(inputBox.value.toLowerCase() === spellingWord){
         alertMessages.innerHTML = 'Correct!' 
         score ++
+        clearInterval(timer)
         if(score % 10 === 0) {
             currentLevel = Math.min(currentLevel + 1, gameLevels.length - 1)
             level ++
             levelText.innerHTML = 'Level: ' + level
             alertMessages.innerHTML = 'Correct! You have made it to the next level!'
         } else if (score === 40) {
-            alertMessages.innerHTML = 'Congrats, you WIN! You have spelled 10 words correct in all four levels!'
+            alertMessages.innerHTML = 'Congrats, you WIN! You have spelled 10 words correctly in all four levels!'
         }
             scoreValue.innerHTML = "Score: "+ score // adding 1 to the score for each correct word
             const newCorrectWord = document.createElement('li')
             newCorrectWord.textContent = spellingWord
             correctWordsList.appendChild(newCorrectWord)
-            // correctWordsList.innerHTML = spellingWord
 
          } else {
             alertMessages.innerHTML = `Incorrect! The correct spelling was ${spellingWord}.`  
             const newIncorrectWord = document.createElement('li')
             newIncorrectWord.textContent = spellingWord
             incorrectWordsList.appendChild(newIncorrectWord)
-            // incorrectWordsList.innerHTML = spellingWord
     }
 // Making sure to clear the input box after each guess
     inputBox.value = ''
@@ -100,5 +117,13 @@ submitButton.addEventListener('click', function(){
         alertMessages.innerHTML = ''
     }, 3000)
 
+    clearInterval(timer)
+    seconds = 20
+    gameTimerElement.innerHTML = 'Timer: 00:20'
+
 })
 
+
+
+
+   
