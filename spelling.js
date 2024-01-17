@@ -64,6 +64,7 @@ correctWordsList = document.getElementById('correct-list')
 incorrectWordsList = document.getElementById('incorrect-list')
 scoreValue = document.getElementById('score')
 alertMessages = document.getElementById('alerts')
+inputDisplay1 = document.getElementById('inputDisplay1')
 
 // Event Listener for my submit button
 submitButton.addEventListener('click', function(){     
@@ -78,12 +79,18 @@ submitButton.addEventListener('click', function(){
         } else if (score === 40) {
             alertMessages.innerHTML = 'Congrats, you WIN! You have spelled 10 words correct in all four levels!'
         }
-        scoreValue.innerHTML = "Score: "+ score // adding 1 to the score for each correct word
-        correctWordsList.innerHTML = spellingWord
+            scoreValue.innerHTML = "Score: "+ score // adding 1 to the score for each correct word
+            const newCorrectWord = document.createElement('li')
+            newCorrectWord.textContent = spellingWord
+            correctWordsList.appendChild(newCorrectWord)
+            // correctWordsList.innerHTML = spellingWord
 
-    } else {
-        alertMessages.innerHTML = `Incorrect! The correct spelling was ${spellingWord}.`  
-        incorrectWordsList.innerHTML = spellingWord
+         } else {
+            alertMessages.innerHTML = `Incorrect! The correct spelling was ${spellingWord}.`  
+            const newIncorrectWord = document.createElement('li')
+            newIncorrectWord.textContent = spellingWord
+            incorrectWordsList.appendChild(newIncorrectWord)
+            // incorrectWordsList.innerHTML = spellingWord
     }
 // Making sure to clear the input box after each guess
     inputBox.value = ''
