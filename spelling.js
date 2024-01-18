@@ -123,6 +123,10 @@ submitButton.addEventListener('click', function(){
             const newIncorrectWord = document.createElement('li')
             newIncorrectWord.textContent = spellingWord
             incorrectWordsList.appendChild(newIncorrectWord)
+                if (incorrectWords === 15){
+                    gameOver = true
+                    alertMessages.innerHTML = 'You spelled 15 words incorrectly, GAME OVER!'
+                    }
         }
 // Making sure to clear the input box after each guess
     inputBox.value = ''
@@ -139,8 +143,6 @@ submitButton.addEventListener('click', function(){
 })
 
 
-if (incorrectWords === 15){
-    gameOver = true
-}
+
 
    

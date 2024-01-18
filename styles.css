@@ -20,9 +20,19 @@
     cursor:pointer;
 }
 
-p{
+#welcome {
     font-size: 30px;
 }
+
+#rules {
+    line-height: 2;
+}
+
+p {
+    color: rgb(241, 191, 73);
+    font-family: 'Ubuntu', sans-serif;
+}
+
 
 img {
     width: 25vw;
@@ -49,7 +59,7 @@ body {
     display: flex;
     flex-direction: column;
     place-items: center;
-    /* margin-bottom: 20px; */
+    font-family: 'Ubuntu', sans-serif;
 }
 
 #input {
