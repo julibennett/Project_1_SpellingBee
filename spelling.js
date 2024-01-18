@@ -115,15 +115,7 @@ submitButton.addEventListener('click', function(){
             level ++
             levelText.innerHTML = 'Level: ' + level 
             alertMessages.innerHTML = 'Correct! You have made it to the next level!' // New level
-        } else if (score === 40) {
-            levelText.innerHTML = 'Level: ' + 4
-            alertMessages.innerHTML = 'Congrats, you WIN! You have spelled 10 words correctly in all four levels!'
-            gameOver = true
-            // returning back to the start screen
-            setTimeout(function() {
-                endGame()
-            }, 3000)
-        }
+        } 
             scoreValue.innerHTML = "Score: "+ score // adding 1 to the score for each correct word
             const newCorrectWord = document.createElement('li') 
             newCorrectWord.textContent = spellingWord
@@ -133,12 +125,29 @@ submitButton.addEventListener('click', function(){
             incorrectWords ++
             incorrectWordsNumber.innerHTML = 'Incorrect: ' + incorrectWords
             alertMessages.innerHTML = `Incorrect! The correct spelling was ${spellingWord}.`  
+
             const newIncorrectWord = document.createElement('li')
             newIncorrectWord.textContent = spellingWord
             incorrectWordsList.appendChild(newIncorrectWord)
+
+                // LOSING THE GAME
                 if (incorrectWords === 15){
                     gameOver = true
+                    score = 0
+                    correctWords = 0
+                    incorrectWords = 0
+
                     alertMessages.innerHTML = 'You spelled 15 words incorrectly, GAME OVER!'
+                    levelText.innerHTML = 'Level: 1'
+                    scoreValue.innerHTML = 'Score: ' + score
+
+                    incorrectWordsList.innerHTML = ''
+                    incorrectWordsNumber.innerHTML = 'Incorrect: '
+
+                    correctWordsList.innerHTML = ''
+                    correctWordsNumber.innerHTML = 'Correct: '
+
+
                     //returning back to the start screen
                     setTimeout(function() {
                         endGame()
@@ -146,6 +155,31 @@ submitButton.addEventListener('click', function(){
                     
                 }
         }
+
+                // WINNING THE GAME
+                if (score === 40) {
+                    levelText.innerHTML = 'Level: 1' 
+                    alertMessages.innerHTML = 'Congrats, you WIN! You have spelled 10 words correctly in all four levels!'
+
+                    gameOver = true
+                    score = 0
+                    correctWords = 0
+                    incorrectWords = 0
+
+                    scoreValue.innerHTML = 'Score: ' + score
+
+                    incorrectWordsList.innerHTML = ''
+                    incorrectWordsNumber.innerHTML = 'Incorrect: '
+
+                    correctWordsList.innerHTML = ''
+                    correctWordsNumber.innerHTML = 'Correct: '
+
+                    // returning back to the start screen
+                    setTimeout(function() {
+                        endGame()
+                    }, 3000)
+        }
+
 // Making sure to clear the input box after each guess
     inputBox.value = ''
 
