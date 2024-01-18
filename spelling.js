@@ -53,6 +53,12 @@ document.addEventListener('DOMContentLoaded', function() {
         startOverlay.style.display = 'none'
         everyElement.style.visibility = 'visible'
     }
+
+    window.endGame = function () {
+        startOverlay.style.display = 'flex'
+        everyElement.style.visibility = 'hidden'
+    }
+
         startOverlay.style.display = 'flex'
 })
 
@@ -110,6 +116,10 @@ submitButton.addEventListener('click', function(){
         } else if (score === 40) {
             levelText.innerHTML = 'Level: ' + 4
             alertMessages.innerHTML = 'Congrats, you WIN! You have spelled 10 words correctly in all four levels!'
+            gameOver = true
+            setTimeout(function() {
+                endGame()
+            }, 3000)
         }
             scoreValue.innerHTML = "Score: "+ score // adding 1 to the score for each correct word
             const newCorrectWord = document.createElement('li') 
@@ -126,7 +136,11 @@ submitButton.addEventListener('click', function(){
                 if (incorrectWords === 15){
                     gameOver = true
                     alertMessages.innerHTML = 'You spelled 15 words incorrectly, GAME OVER!'
-                    }
+                    setTimeout(function() {
+                        endGame()
+                    }, 3000)
+                    
+                }
         }
 // Making sure to clear the input box after each guess
     inputBox.value = ''
@@ -141,8 +155,6 @@ submitButton.addEventListener('click', function(){
     gameTimerElement.innerHTML = 'Timer: 00:20'
 
 })
-
-
 
 
    
