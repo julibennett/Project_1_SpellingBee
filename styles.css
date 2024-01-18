@@ -1,3 +1,15 @@
+#start {
+    display: flex;
+    padding: 50px;
+    justify-content: center;
+    color: green;
+    /* background-color: black; */
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 5vw;
+    width: 50%;
+}
+
+
 img {
     width: 25vw;
     border: 10px solid black;
@@ -18,7 +30,8 @@ body {
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
-.everything {
+#everything {
+    visibility: hidden;
     display: flex;
     flex-direction: column;
     place-items: center;

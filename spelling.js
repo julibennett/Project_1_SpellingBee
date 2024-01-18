@@ -33,6 +33,8 @@ incorrectWordsList = document.getElementById('incorrect-list')
 scoreValue = document.getElementById('score')
 alertMessages = document.getElementById('alerts')
 hearWordAgain = document.getElementById('hear-again')
+everyElement = document.getElementById('everything')
+startButton = document.getElementById('start')
 
 // My arrays of words for each level of the game
 const gameLevels = [
@@ -44,6 +46,13 @@ const gameLevels = [
 
 ['frugivore', 'telamon', 'janthina', 'toorie', 'cataphora', 'nahcolite', 'giallolino', 'crokinole', 'yabbies', 'cirri', 'anent', 'gabarit', 'cioppino', 'nocive', 'deliquesce', 'selah', 'efflux', 'gallivat', 'kapparah', 'cathect', 'bismillah', 'battue', 'ivermectin', 'catjang', 'neem', 'hordeolum', 'medulla', 'aughts', 'hominim', 'carnitine', 'triduum', 'wapiti', 'galena', 'luftmensch', 'deathin', 'zowie', 'dvandva', 'aggrandizement', 'coulrophobia', 'ubiquinone', 'ciliopathy', 'logothete', 'grobian', 'kyphoplasty', 'rooseveltite', 'deceleron', 'effleurage', 'demulcent', 'emolus', 'nidicolous', 'oxyacetylene', 'hellebore', 'pillor', 'deleterious', 'maillot', 'hinoki', 'pointelle', 'tinnient', 'pochoir', 'goanna', 'icosahedron', 'fortissimo', 'portmanteau', 'mortadella', 'eleemosynary', 'ossicle', 'alpargata', 'disembogue', 'luculent', 'xerogel', 'vizierial', 'ardoise', 'stretto', 'neophyte', 'comanchero', 'nimiety', 'lokelani', 'basilica', 'rinceau', 'bhangra', 'analgesia', 'risorgimento', 'ferruginous', 'foudroyant', 'sesquipedalian', 'funori', 'tussock', 'linnet', 'puerilely', 'plangency', 'fjeld', 'duello', 'tmesis', 'katakana', 'bouffant', 'griot', 'pongee', 'acoel', 'furuncle', 'becquerel', 'darnel', 'zazen'],
 ]
+
+startButton.addEventListener('click', function() {
+    everyElement.style.visibility = 'visible'
+    startButton.style.visibility = 'hidden'
+})
+
+
 
 // Function that will start the timer when it is called during the click event on the 'Click for New Word' button
 function startCountdown() {
