@@ -32,7 +32,7 @@ correctWordsList = document.getElementById('correct-list')
 incorrectWordsList = document.getElementById('incorrect-list')
 scoreValue = document.getElementById('score')
 alertMessages = document.getElementById('alerts')
-
+hearWordAgain = document.getElementById('hear-again')
 
 // My arrays of words for each level of the game
 const gameLevels = [
@@ -57,7 +57,7 @@ function startCountdown() {
             gameTimerElement.innerHTML = 'Timer: 00:' + seconds
         }
     }, 1000)
-    }
+}
 
 // Add event listener function for the 'Click for New Word' button
 generateNewWord.addEventListener('click',function() {
@@ -93,10 +93,10 @@ submitButton.addEventListener('click', function(){
             currentLevel = Math.min(currentLevel + 1, gameLevels.length - 1)
             level ++
             levelText.innerHTML = 'Level: ' + level 
-            alertMessages.innerHTML = 'Correct! You have made it to the next level!' // New level alert
+            alertMessages.innerHTML = 'Correct! You have made it to the next level!' // New level
         } else if (score === 40) {
             levelText.innerHTML = 'Level: ' + 4
-            alertMessages.innerHTML = 'Congrats, you WIN! You have spelled 10 words correctly in all four levels!' // Win alert!
+            alertMessages.innerHTML = 'Congrats, you WIN! You have spelled 10 words correctly in all four levels!'
         }
             scoreValue.innerHTML = "Score: "+ score // adding 1 to the score for each correct word
             const newCorrectWord = document.createElement('li') 
