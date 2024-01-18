@@ -4,9 +4,9 @@
 
 let spellingWord;
 
-let correctWords;
+let correctWords = 0;
 
-let incorrectWords;
+let incorrectWords = 0;
 
 let score = 0;
 
@@ -33,6 +33,8 @@ const gameLevels = [
 
 levelText = document.getElementById('level')
 gameTimerElement = document.getElementById('timer')
+correctWordsNumber = document.getElementById('correct')
+incorrectWordsNumber = document.getElementById('incorrect')
 
 
 function startCountdown() {
@@ -41,6 +43,9 @@ function startCountdown() {
         gameTimerElement.innerHTML = 'Timer: 00:' + (seconds < 10 ? '0' : '') + seconds
         if(seconds === 0) {
             clearInterval(timer)
+            alertMessages.innerHTML = 'Time is up! The word was ' + spellingWord + '!'
+            seconds = 20
+            gameTimerElement.innerHTML = 'Timer: 00:' + seconds
         }
     }, 1000)
     }
@@ -89,6 +94,8 @@ submitButton.addEventListener('click', function(){
     if(inputBox.value.toLowerCase() === spellingWord){
         alertMessages.innerHTML = 'Correct!' 
         score ++
+        correctWords ++
+        correctWordsNumber. innerHTML = 'Correct: ' + correctWords
         clearInterval(timer)
         if(score % 10 === 0) {
             currentLevel = Math.min(currentLevel + 1, gameLevels.length - 1)
@@ -104,6 +111,8 @@ submitButton.addEventListener('click', function(){
             correctWordsList.appendChild(newCorrectWord)
 
          } else {
+            incorrectWords ++
+            incorrectWordsNumber.innerHTML = 'Incorrect: ' + incorrectWords
             alertMessages.innerHTML = `Incorrect! The correct spelling was ${spellingWord}.`  
             const newIncorrectWord = document.createElement('li')
             newIncorrectWord.textContent = spellingWord

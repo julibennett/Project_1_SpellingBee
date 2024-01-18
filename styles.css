@@ -68,7 +68,7 @@ button:hover {
     background-color: rgb(241, 191, 73);
     text-align: center;
     width: 10vw; 
-    font-size: 2vw;
+    font-size: 1vw;
     margin: 2vh;
    
    
@@ -81,7 +81,7 @@ button:hover {
     background-color: rgb(241, 191, 73);
     text-align: center;
     width: 10vw;
-    font-size: 2vw;
+    font-size: 1vw;
     margin: 2vh;
 }
 
@@ -94,8 +94,8 @@ button:hover {
     margin-right: 20px;
     text-align: center;
     padding: 5px; 
-    width: 10vw;
-    font-size: 2vw;
+    width: 7vw;
+    font-size: 1vw;
 }
 
 #timer {
@@ -105,8 +105,8 @@ button:hover {
     margin-left: 20px;
     background-color: rgb(241, 191, 73);
     padding: 5px;
-    width: 10vw;
-    font-size: 2vw;
+    width: 7vw;
+    font-size: 1vw;
 
 }
 
@@ -120,7 +120,7 @@ button:hover {
 #alerts {
     color: rgb(241, 191, 73);
     text-align: center;
-    font-size: 2vw;
+    font-size: 1.5vw;
 }
 
 #correct-list {
