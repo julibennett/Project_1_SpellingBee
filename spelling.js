@@ -20,6 +20,20 @@ let currentLevel = 0;
 
 let gameOver = false;
 
+// Grabing all the DOM elements that I'm going to need
+levelText = document.getElementById('level')
+gameTimerElement = document.getElementById('timer')
+correctWordsNumber = document.getElementById('correct')
+incorrectWordsNumber = document.getElementById('incorrect')
+generateNewWord = document.getElementById('generate')
+submitButton = document.getElementById('submit')
+inputBox = document.getElementById('input')
+correctWordsList = document.getElementById('correct-list')
+incorrectWordsList = document.getElementById('incorrect-list')
+scoreValue = document.getElementById('score')
+alertMessages = document.getElementById('alerts')
+
+
 // My arrays of words for each level of the game
 const gameLevels = [
 ['smart', 'dump', 'merge', 'order', 'list', 'craft', 'alone', 'goat', 'cat', 'bump', 'yellow', 'slap', 'ship', 'array', 'code', 'trip', 'pasta', 'smell', 'shirt', 'hello', 'flip', 'cow', 'move', 'book', 'lose', 'spell', 'water', 'candle', 'home', 'yummy', 'cube', 'circle', 'room', 'scarf', 'ocean', 'teach', 'liver', 'thank', 'story', 'people', 'coming', 'foul', 'chief', 'sauce', 'calm', 'salad', 'slide', 'also', 'foam', 'power', 'place', 'oil', 'pretty', 'china', 'camera', 'shoe', 'swim', 'idea', 'feet', 'large', 'frame', 'rapid', 'booth', 'track', 'crust', 'bag', 'page', 'bush', 'leaf', 'wood', 'stick', 'grass', 'flower', 'cap', 'tea', 'blue', 'black', 'white', 'sweet', 'dark','light', 'ink','hard', 'soft', 'wild', 'brand', 'band', 'slip', 'slap', 'slime', 'catch','eat', 'drink','table','string','fish','pink','spice','gold','silver','door','page','pants','shirt','watch','metal','under','above','wave','cut','born','horn','morning','night','straw','box','sand','beer','bird','bug','cube','heart','gym','glass','cute','ugly','pretty','smile','stool','tab','pain','must','jelly','drill','hike','son','good','bad','mask','cell','flap','poor','cold','hot','try','clock','foam','cheese','bread','spike','shoe','prize','goal'],
@@ -31,12 +45,7 @@ const gameLevels = [
 ['frugivore', 'telamon', 'janthina', 'toorie', 'cataphora', 'nahcolite', 'giallolino', 'crokinole', 'yabbies', 'cirri', 'anent', 'gabarit', 'cioppino', 'nocive', 'deliquesce', 'selah', 'efflux', 'gallivat', 'kapparah', 'cathect', 'bismillah', 'battue', 'ivermectin', 'catjang', 'neem', 'hordeolum', 'medulla', 'aughts', 'hominim', 'carnitine', 'triduum', 'wapiti', 'galena', 'luftmensch', 'deathin', 'zowie', 'dvandva', 'aggrandizement', 'coulrophobia', 'ubiquinone', 'ciliopathy', 'logothete', 'grobian', 'kyphoplasty', 'rooseveltite', 'deceleron', 'effleurage', 'demulcent', 'emolus', 'nidicolous', 'oxyacetylene', 'hellebore', 'pillor', 'deleterious', 'maillot', 'hinoki', 'pointelle', 'tinnient', 'pochoir', 'goanna', 'icosahedron', 'fortissimo', 'portmanteau', 'mortadella', 'eleemosynary', 'ossicle', 'alpargata', 'disembogue', 'luculent', 'xerogel', 'vizierial', 'ardoise', 'stretto', 'neophyte', 'comanchero', 'nimiety', 'lokelani', 'basilica', 'rinceau', 'bhangra', 'analgesia', 'risorgimento', 'ferruginous', 'foudroyant', 'sesquipedalian', 'funori', 'tussock', 'linnet', 'puerilely', 'plangency', 'fjeld', 'duello', 'tmesis', 'katakana', 'bouffant', 'griot', 'pongee', 'acoel', 'furuncle', 'becquerel', 'darnel', 'zazen'],
 ]
 
-levelText = document.getElementById('level')
-gameTimerElement = document.getElementById('timer')
-correctWordsNumber = document.getElementById('correct')
-incorrectWordsNumber = document.getElementById('incorrect')
-
-
+// Function that will start the timer when it is called during the click event on the 'Click for New Word' button
 function startCountdown() {
     timer = setInterval(function() {
         seconds --
@@ -50,65 +59,49 @@ function startCountdown() {
     }, 1000)
     }
 
-// Grabbing the generate word button element
-generateNewWord = document.getElementById('generate')
-
-
-// Add event listener function
+// Add event listener function for the 'Click for New Word' button
 generateNewWord.addEventListener('click',function() {
     // generateNewWord.addEventListener('click', levelHandler)
     const levelArray = gameLevels[currentLevel]
     randomNumber = Math.floor(Math.random()*(levelArray.length +1))
     spellingWord = levelArray[randomNumber]
 
-// Getting the computer the speak each word verbally for the listener to hear
+// Getting the computer the speak each random word out loud for the listener to hear
     let pronounce = new SpeechSynthesisUtterance()
     pronounce.text = spellingWord
     speechSynthesis.speak(pronounce)
 
-    startCountdown()
+    startCountdown() // Calling the previously mentioned function to start the 20 second timer
 })
-   
 
-// Targeting my pronounce word button which will repeat the spelling word as many times as the user wants
-hearWordAgain = document.getElementById('hear-again')
-
-// Using the same speech event listener as for the generate new word button
+// Using the same speech event listener as before for the 'Pronounce Word' button which just says the same word again for the user
 hearWordAgain.addEventListener('click', function(){
     let pronounce = new SpeechSynthesisUtterance()
     pronounce.text = spellingWord
     speechSynthesis.speak(pronounce)
 })
 
-// Grabbing some more elements that I'm going to need
-submitButton = document.getElementById('submit')
-inputBox = document.getElementById('input')
-correctWordsList = document.getElementById('correct-list')
-incorrectWordsList = document.getElementById('incorrect-list')
-scoreValue = document.getElementById('score')
-alertMessages = document.getElementById('alerts')
-// inputDisplay1 = document.getElementById('inputDisplay1')
-
-// Event Listener for my submit button
+// Event Listener for my 'Submit' button
 submitButton.addEventListener('click', function(){  
     if(inputBox.value.toLowerCase() === spellingWord){
         alertMessages.innerHTML = 'Correct!' 
         score ++
         correctWords ++
-        correctWordsNumber. innerHTML = 'Correct: ' + correctWords
+        correctWordsNumber. innerHTML = 'Correct: ' + correctWords // a number visual for the words you've spelled correctly
         clearInterval(timer)
-        if(score % 10 === 0) {
+        if(score % 10 === 0) { // if the score is divisible by 10 then you move onto the next level (means you spelled 10 words correctly in a level)
             currentLevel = Math.min(currentLevel + 1, gameLevels.length - 1)
             level ++
-            levelText.innerHTML = 'Level: ' + level
-            alertMessages.innerHTML = 'Correct! You have made it to the next level!'
+            levelText.innerHTML = 'Level: ' + level 
+            alertMessages.innerHTML = 'Correct! You have made it to the next level!' // New level alert
         } else if (score === 40) {
-            alertMessages.innerHTML = 'Congrats, you WIN! You have spelled 10 words correctly in all four levels!'
+            levelText.innerHTML = 'Level: ' + 4
+            alertMessages.innerHTML = 'Congrats, you WIN! You have spelled 10 words correctly in all four levels!' // Win alert!
         }
             scoreValue.innerHTML = "Score: "+ score // adding 1 to the score for each correct word
-            const newCorrectWord = document.createElement('li')
+            const newCorrectWord = document.createElement('li') 
             newCorrectWord.textContent = spellingWord
-            correctWordsList.appendChild(newCorrectWord)
+            correctWordsList.appendChild(newCorrectWord) // adding the correctly spelled word to the correct words list
 
          } else {
             incorrectWords ++
@@ -117,7 +110,7 @@ submitButton.addEventListener('click', function(){
             const newIncorrectWord = document.createElement('li')
             newIncorrectWord.textContent = spellingWord
             incorrectWordsList.appendChild(newIncorrectWord)
-    }
+        }
 // Making sure to clear the input box after each guess
     inputBox.value = ''
 
@@ -133,6 +126,8 @@ submitButton.addEventListener('click', function(){
 })
 
 
-
+if (incorrectWords === 15){
+    gameOver = true
+}
 
    
