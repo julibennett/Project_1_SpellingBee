@@ -243,8 +243,12 @@ button:hover {
     } 
     
      #correct, #incorrect{
-        padding-top: 5px;
+        padding-top: 8px;
         padding-bottom: 5px;
     } 
+
+    #level, #score, #timer {
+        padding: 8px;
+    }
 
 } 

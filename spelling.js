@@ -72,6 +72,8 @@ function startCountdown() {
         if(seconds === 0) {
             clearInterval(timer)
             alertMessages.innerHTML = 'Time is up! The word was ' + spellingWord + '!'
+            incorrectWords ++
+            incorrectWordsNumber.innerHTML = 'Incorrect: ' + incorrectWords
             seconds = 20
             gameTimerElement.innerHTML = 'Timer: 00:' + seconds
         }
@@ -117,6 +119,7 @@ submitButton.addEventListener('click', function(){
             levelText.innerHTML = 'Level: ' + 4
             alertMessages.innerHTML = 'Congrats, you WIN! You have spelled 10 words correctly in all four levels!'
             gameOver = true
+            // returning back to the start screen
             setTimeout(function() {
                 endGame()
             }, 3000)
@@ -136,6 +139,7 @@ submitButton.addEventListener('click', function(){
                 if (incorrectWords === 15){
                     gameOver = true
                     alertMessages.innerHTML = 'You spelled 15 words incorrectly, GAME OVER!'
+                    //returning back to the start screen
                     setTimeout(function() {
                         endGame()
                     }, 3000)
