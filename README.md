@@ -17,8 +17,8 @@
 
 ## Game Visuals/Screenshots
 
-![The Game] (/desktop/spellingbee.png 'Game in Play')
+![The Game] (spellingbee.png 'Game in Play')
 
-![Wire Frames] (/desktop/SEI Project 1-Julianna Bennett.png 'Wireframes')
+![Wire Frames] (SEI Project 1-Julianna Bennett.png 'Wireframes')
 
 
