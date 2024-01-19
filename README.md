@@ -16,9 +16,9 @@ Do you think you have what it takes to win this spelling bee? **Let's find out!*
 
 ## Game Visuals/Screenshots
 
-![Game Start Screen](Project_1_SpellingBee/spellingbeestart.png 'Start Screen')
-![The Game in Play](Project_1_SpellingBee/spellingbee.png 'Game in Play')
-![Wire Frames](Project_1_SpellingBee/wireframes.png 'Wireframes')
+![Game Start Screen](spellingbeestart.png 'Start Screen')
+![The Game in Play](spellingbee.png 'Game in Play')
+![Wire Frames](wireframes.png 'Wireframes')
 
 ## Built With
 
