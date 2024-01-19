@@ -17,8 +17,9 @@
 
 ## Game Visuals/Screenshots
 
-![The Game] (/Users/juliannabennett/code/sei/projects/Project_1_SpellingBee/Project_1_SpellingBee/spellingbee.png' Game in Play')
+![The Game] (https://github.com/julibennett/Project_1_SpellingBee/blob/main/spellingbee.png 'Game in Play')
+            (https://github.com/julibennett/Project_1_SpellingBee/blob/main/spellingbeestart.png 'Start Screen')
 
-![Wire Frames] (/Users/juliannabennett/code/sei/projects/Project_1_SpellingBee/Project_1_SpellingBee/SEI Project 1-Julianna Bennett.png 'Wireframes')
+![Wire Frames] (https://github.com/julibennett/Project_1_SpellingBee/blob/main/SEI%20Project%201-Julianna%20Bennett.png 'Wireframes')
 
 
