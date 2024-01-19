@@ -17,9 +17,9 @@
 
 ## Game Visuals/Screenshots
 
-![The Game] (spellingbee.png 'Game in Play')
-            (spellingbeestart.png 'Start Screen')
+![The Game] (/code/sei/projects/Project_1_SpellingBee/Project_1_SpellingBee/spellingbee.png 'Game in Play')
+            (/code/sei/projects/Project_1_SpellingBee/Project_1_SpellingBee/spellingbeestart.png 'Start Screen')
 
-![Wire Frames] (SEI Project 1-Julianna Bennett.png 'Wireframes')
+![Wire Frames] (/code/sei/projects/Project_1_SpellingBee/Project_1_SpellingBee/SEI Project 1-Julianna Bennett.png 'Wireframes')
 
 
