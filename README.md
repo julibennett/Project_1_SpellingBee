@@ -16,8 +16,13 @@ Do you think you have what it takes to win this spelling bee? **Let's find out!*
 
 ## Game Visuals/Screenshots
 
+Start Screen
 ![Game Start Screen](spellingbeestart.png 'Start Screen')
+
+The Game in Play
 ![The Game in Play](spellingbee.png 'Game in Play')
+
+Wireframe
 ![Wire Frames](wireframes.png 'Wireframes')
 
 ## Built With
