@@ -61,7 +61,7 @@ Do you think you have what it takes to win this spelling bee? **Let's find out!*
 
 ## Show Your Support!
 
-Feedback is greatly appreciated! Please feel free to contribute, create, an issue, or ask any questions! 
+Feedback is greatly appreciated! Please feel free to contribute, create an issue, or ask any questions! 
 
 Please leave a ⭐️ if you like this project! Thanks for viewing!
 
